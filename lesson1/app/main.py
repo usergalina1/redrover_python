@@ -26,8 +26,9 @@ class Priority(str, Enum):
     high = "высокий"
 
 
-def generate_id(): 
+def generate_id():
     return len(cases)
+
 
 class Case(BaseModel):
     id: int = Field(default_factory=generate_id)
@@ -41,10 +42,16 @@ class Case(BaseModel):
 cases = []
 
 
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
+
+
 @app.post("/testcases/", response_model=Case)
 def create_test_case(test_case: Case):
     cases.append(test_case)
     return test_case
+
 
 @app.get("/testcases/{test_case_id}", response_model=Case)
 def read_test_case(test_case_id: int):
@@ -57,6 +64,7 @@ def read_test_case(test_case_id: int):
 @app.get("/testcases/", response_model=list[Case])
 def read_cases():
     return cases
+
 
 @app.put("/testcases/{test_case_id}", response_model=Case)
 def update_case(test_case_id: int, updated_case: Case):
