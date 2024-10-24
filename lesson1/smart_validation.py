@@ -17,3 +17,4 @@ class User(BaseModel):
 
 
 print(User(**user_dict).model_dump())
+print(User(**user_dict).model_dump_json())
