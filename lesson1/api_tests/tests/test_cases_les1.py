@@ -329,6 +329,9 @@ def test1_delete_case():
 
 
 def test2_delete_not_existing_case():
+    """
+    negative - delete not existing case
+    """
     response2 = client.make_request(
         handle=f"/testcases/455",
         method="DELETE",
