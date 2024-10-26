@@ -1,14 +1,12 @@
 # Полезное 
 
-Документация Selenium: <https://www.selenium.dev/documentation/> 
-Архитектура Selenium: <https://www.browserstack.com/guide/architecture-of-selenium-webdriver>, <https://www.youtube.com/watch?v=8fm5sJ_P90Y>
-
-Selenium manager: <https://www.selenium.dev/documentation/selenium_manager/>
-Репозиторий Selenium: <https://github.com/SeleniumHQ/selenium>
-W3C selenium: <https://www.w3.org/TR/webdriver2/>
-
-Приложение для тестирования: <http://195.133.27.184/>
-Какие селекторы стоит использовать: <https://docs.cypress.io/app/core-concepts/best-practices>
+1. Документация Selenium: <https://www.selenium.dev/documentation/> 
+2. Архитектура Selenium: <https://www.browserstack.com/guide/architecture-of-selenium-webdriver>, <https://www.youtube.com/watch?v=8fm5sJ_P90Y>
+3. Selenium manager: <https://www.selenium.dev/documentation/selenium_manager/>
+4. Репозиторий Selenium: <https://github.com/SeleniumHQ/selenium>
+5. W3C selenium: <https://www.w3.org/TR/webdriver2/>
+6. Приложение для тестирования: <http://195.133.27.184/>
+7. Какие селекторы стоит использовать: <https://docs.cypress.io/app/core-concepts/best-practices>
 
 
 ## Пригодится
