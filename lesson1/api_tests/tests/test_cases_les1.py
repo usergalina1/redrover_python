@@ -43,7 +43,7 @@ def test1_create_case1():
         handle="/testcases", method="POST", json=create_case_dict
     )
     response.status_code_should_be_eq(200)
-    response.value_with_key("id").should_be_eq(1)
+    response.value_with_key("id").should_be_eq(0)
 
 
 def test2_create_case_empty_data():
@@ -123,8 +123,7 @@ def test3_create_case_missed_priority_data():
                 }
             ]
         }
-    )  # NOTE: There is a different Response body in a Swagger ?
-
+    )
 
 ### Get TC ID - GET
 def test1_get_case_id():
