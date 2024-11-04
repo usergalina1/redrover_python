@@ -7,7 +7,7 @@ from lesson1.api_tests.utils.api_client import client
 
 ### Get Read Root - GET
 def test_get_read_root():
-    response = get_read_root()
+    response = get_read_root();
     response.status_code_should_be_eq(200)
     response.json_should_be_eq({"Hello": "World"})
 
