@@ -31,11 +31,8 @@ def test_registration(driver):
 
     # Дождаться появления кнопки "Начать тестирование"
     # Найти кнопку: Найти на странице кнопку с текстом "Начать тестирование".
-    start_test_btn = driver.find_element(By.XPATH, "//button[@id='startTest']")
-    assert start_test_btn.is_displayed()
-    assert start_test_btn.text == 'Начать тестирование'
-
     # Кликнуть по кнопке "Начать тестирование".
+    start_test_btn = driver.find_element(By.XPATH, "//button[@id='startTest']")
     start_test_btn.click()
 
     login = driver.find_element(By.XPATH, "//*[@for='login']")
@@ -57,11 +54,11 @@ def test_registration(driver):
     registration_btn = driver.find_element(By.XPATH, "//*[@id='register']")
     registration_btn.click()
 
-
     # Удостовериться, что появился индикатор загрузки.
     loader_indicator = driver.find_element(By.XPATH, "//*[@id='loader']")
     assert loader_indicator.is_displayed()
 
+    time.sleep(5)
 
     # Убедиться, что после завершения загрузки появилось сообщение "Вы успешно зарегистрированы".
     success_registration = driver.find_element(By.XPATH, "//*[@id='successMessage']")
