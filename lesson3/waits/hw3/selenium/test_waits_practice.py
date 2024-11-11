@@ -1,3 +1,6 @@
+import time
+import requests
+
 import pytest
 from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
@@ -77,3 +80,68 @@ def test3(driver, wait):
 
     hello_world = wait.until(EC.visibility_of_element_located((By.XPATH, hello_world_locator)))
     assert hello_world.is_displayed()
+
+
+# 1. <https://the-internet.herokuapp.com/add_remove_elements/> (Необходимо создать и удалить элемент)
+def test4(driver, wait):
+    driver.get("https://the-internet.herokuapp.com/add_remove_elements/")
+    add_element_btn_locator = "//*[@onclick= 'addElement()']"
+    delete_btn_locator = "//*[@onclick= 'deleteElement()']"
+    add_element = wait.until(EC.element_to_be_clickable((By.XPATH, add_element_btn_locator)))
+    add_element.click()
+    delete_btn = wait.until(EC.element_to_be_clickable((By.XPATH, delete_btn_locator)))
+    delete_btn.click()
+    assert wait.until(EC.invisibility_of_element_located((By.XPATH, delete_btn_locator)))
+
+
+# 2. <https://the-internet.herokuapp.com/basic_auth> (Необходимо пройти базовую авторизацию)
+# (NOT CLEAR)
+def test5(driver, wait):
+    username = "admin"
+    password = "admin"
+
+    url = f"http://{username}:{password}@the-internet.herokuapp.com/basic_auth"
+    title_locator = "//*[text()='Basic Auth']"
+
+    driver.get(url)
+    time.sleep(2)
+    title = wait.until(EC.visibility_of_element_located((By.XPATH, title_locator)))
+    assert title.text == "Basic Auth"
+
+
+# 3. <https://the-internet.herokuapp.com/broken_images> (Необходимо найти сломанные изображения)
+# (NOT CLEAR)
+def test6(driver, wait):
+    driver.get("https://the-internet.herokuapp.com/broken_images")
+
+    image_locator = "//div/img"
+    images = wait.until(EC.visibility_of_all_elements_located((By.XPATH, image_locator)))
+
+    broken_images = []
+
+    for i in images:
+        src = i.get_attribute("src")
+
+        response = requests.get(src)
+        if response.status_code != 200 or response.status_code == 404:
+            broken_images.append(src)
+
+    assert len(broken_images) == 2
+
+
+# 4. <https://the-internet.herokuapp.com/checkboxes> (Практика с чек боксами)
+def test7(driver, wait):
+    driver.get("https://the-internet.herokuapp.com/checkboxes")
+
+    check_boxs_locator = "//*[@type = 'checkbox']"
+    check_boxs = wait.until(EC.visibility_of_all_elements_located((By.XPATH, check_boxs_locator)))
+
+    for check_box in check_boxs:
+        if not check_box.is_selected():
+            check_box.click()
+        assert check_box.is_selected()
+
+    for check_box in check_boxs:
+        check_box.click()
+        assert not check_box.is_selected()
+        time.sleep(2)
