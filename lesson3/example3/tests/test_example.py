@@ -11,5 +11,6 @@ def test_my_visible_after_with_explicit_waits_with_playwright():
         browser = p.chromium.launch(headless=False)
         page = browser.new_page()
         page.goto('https://demoqa.com/dynamic-properties')
-        expect(page.locator('//button[text()="Visible After 5 Seconds"]')).to_have_text('Visible After 5 Seconds', timeout=15000)
+        expect(page.locator('//button[text()="Visible After 5 Seconds"]')).to_have_text('Visible After 5 Seconds',
+                                                                                        timeout=15000)
         browser.close()
