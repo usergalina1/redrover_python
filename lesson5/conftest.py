@@ -1,8 +1,9 @@
 import pytest 
-from components.header import Header
-from components.register import Register
+from lesson5.components.header import Header
+from lesson5.components.register import Register
 from playwright.sync_api import Page
-import allure 
+import allure
+
 
 # Inspired by: https://gist.github.com/mgaitan/652d39a7df5076e38239d2ae3f6862ed 
 # @pytest.fixture(scope="session")
@@ -20,7 +21,7 @@ import allure
 #         # логика для авторизации 
 #         yield page
 #         context.storage_state(path=storage)
-        
+
 
 @pytest.fixture
 def header(page: Page):
@@ -34,7 +35,6 @@ def register(page: Page):
 
 @pytest.fixture(scope="function", autouse=True)
 def video_and_screenshot(page: Page):
-   
     yield  # здесь выполняется тест
 
     # Сохранить скриншот
@@ -53,4 +53,3 @@ def video_and_screenshot(page: Page):
         name="video",
         attachment_type=allure.attachment_type.WEBM,
     )
-

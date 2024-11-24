@@ -1,11 +1,11 @@
 from playwright.sync_api import Page, expect
-from core.data import base_url
-import allure 
+from lesson5.core.data import base_url
+import allure
+
 
 class Header:
     def __init__(self, page: Page):
         self.page = page
-
 
     @allure.step("Открываем Хэдер на главной странице")
     def visit(self):
@@ -18,5 +18,3 @@ class Header:
     @allure.step("Проверяем видимость кнопки создания объявления")
     def create_listing_button_should_be_visible(self):
         expect(self.page.get_by_test_id("create-listing")).to_be_visible()
-
-    

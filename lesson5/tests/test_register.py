@@ -2,6 +2,7 @@ from faker import Faker
 
 fake = Faker()
 
+
 def test_register_as_tutor(header, register):
     header.visit()
     header.click_on_registration_button()
